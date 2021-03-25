@@ -7,7 +7,7 @@ module.exports = async ({getNamedAccounts, deployments, upgrades}) => {
   const {log} = deployments;
 
   const Token = await ethers.getContractFactory("Token");
-  const token = await upgrades.deployProxy(Token, ['Social Token', 'SCT', 100000]);
+  const token = await upgrades.deployProxy(Token, ['Social Token', 'SCT', 100000, '0x']);
   await token.deployed();
   console.log("Token deployed to:", token.address);
   const implementationStorage = await ethers.provider.getStorageAt(

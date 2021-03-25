@@ -6,3 +6,5 @@ artifacts
 *.swp
 *.swo
 secrets.json
+deployments/localhost/*
+.openzeppelin/unknown*

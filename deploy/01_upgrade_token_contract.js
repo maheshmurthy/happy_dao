@@ -36,5 +36,5 @@ module.exports = async ({getNamedAccounts, deployments, upgrades}) => {
   await deployments.save('Token', tokenAsDeployment);
 };
 
-module.exports.tags = ['Token'];
+module.exports.tags = ['TokenV2'];
 
