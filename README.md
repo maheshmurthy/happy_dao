@@ -7,3 +7,4 @@ This is a simple implementation of a DAO using the [HardHat framework](https://h
 - [Hardhat watcher](https://hardhat.org/plugins/hardhat-watcher.html) plugin to help with TDD
 - [Ethereum Waffle](https://hardhat.org/plugins/nomiclabs-hardhat-waffle.html) to make testing super easy
 - [Ethers.js](https://docs.ethers.io/v5/) to interact with the smart contract through javascript
+- [Solidity Coverage](https://github.com/sc-forks/solidity-coverage) to get code coverage for contracts
