@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/HappyDao.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> HappyDao.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>37/37</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>18/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>36/36</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//SPDX-License-Identifier: Unlicense
+pragma solidity ^0.8.0;
+import "hardhat/console.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "./HappyToken.sol";
+&nbsp;
+contract HappyDao is Initializable, OwnableUpgradeable {
+  HappyToken public happyToken;
+  uint256 public tokenPrice;
+  uint256 public minTokensToJoin;
+&nbsp;
+  enum Vote {
+        Null,
+        Yes,
+        No
+  }
+&nbsp;
+  struct Proposal {
+    address proposer;
+    address payable applicant;
+    uint256 amount;
+    uint256 yesVotes;
+    uint256 noVotes;
+    mapping (address =&gt; Vote) votes;
+    uint256 submissionTime;
+  }
+&nbsp;
+  Proposal[] public proposalList;
+&nbsp;
+  event NewProposal(address proposer, address applicant, uint256 amount, uint256 length);
+&nbsp;
+  function initialize(uint256 _price, uint256 _minTokensToJoin) public initializer {
+    happyToken = new HappyToken();
+    tokenPrice = _price;
+    minTokensToJoin = _minTokensToJoin;
+    __Ownable_init();
+  }
+&nbsp;
+  function join() public payable {
+    console.log("The address %s is requesting join", msg.sender);
+    uint256 totalTokens = msg.value/tokenPrice;
+    require(totalTokens + happyToken.balanceOf(msg.sender) &gt; minTokensToJoin, "You have to purchase minimum tokens to join");
+    console.log("Minting %s tokens", totalTokens);
+    happyToken.mint(msg.sender, totalTokens);
+  }
+&nbsp;
+  function submitProposal(address payable _applicant, uint256 _amount) public {
+    require(canSubmitProposal(msg.sender), "You do not have enough tokens to submit proposal");
+    Proposal storage proposal = proposalList.push();
+    proposal.proposer = msg.sender;
+    proposal.applicant = _applicant;
+    proposal.amount = _amount;
+    proposal.yesVotes = 0;
+    proposal.noVotes = 0;
+    proposal.submissionTime = block.timestamp;
+    emit NewProposal(proposal.proposer, proposal.applicant, proposal.amount, proposalList.length - 1);
+  }
+&nbsp;
+  function getProposal(uint256 index) public view returns (address proposer, address applicant, uint256 amount, uint256 yesVotes, uint256 noVotes) {
+    Proposal storage proposal = proposalList[index];
+    return (proposal.proposer, proposal.applicant, proposal.amount, proposal.yesVotes, proposal.noVotes);
+  }
+&nbsp;
+  function voteForProposal(uint256 proposalId, uint8 vote) public {
+    require(isDaoMember(msg.sender), "You do not have enough tokens to vote for proposal");
+    require(vote &lt; 3, "Invalid Vote");
+    Proposal storage proposal = proposalList[proposalId];
+    proposal.votes[msg.sender] = Vote(vote);
+    if (Vote(vote) == Vote.Yes) {
+      proposal.yesVotes += happyToken.balanceOf(msg.sender);
+    } else if (Vote(vote) == Vote.No) {
+      proposal.noVotes += happyToken.balanceOf(msg.sender);
+    }
+  }
+&nbsp;
+  function releaseFund(uint256 proposalId) public {
+    Proposal storage proposal = proposalList[proposalId];
+    require(proposalHasRequiredYesVotes(proposal.yesVotes, proposal.noVotes),
+            "Proposal does not have minimum votes");
+    require(proposalHasPassedMinDuration(proposal.submissionTime),
+            "Proposal has not passed minimum duration");
+    require(address(this).balance &gt; proposal.amount,
+            "The treasury does not have enough balance");
+    proposal.applicant.transfer(proposal.amount);
+  }
+&nbsp;
+  function isDaoMember(address member) public view returns (bool) {
+    return (happyToken.balanceOf(member) &gt;= minTokensToJoin);
+  }
+&nbsp;
+  function canSubmitProposal(address member) public view returns (bool) {
+    return (happyToken.balanceOf(member) &gt;= minTokensToJoin * 3);
+  }
+&nbsp;
+  function proposalHasRequiredYesVotes(uint256 yesVoteCount, uint256 noVoteCount) public view returns (bool) {
+    return (yesVoteCount &gt; noVoteCount &amp;&amp; yesVoteCount &gt; happyToken.totalSupply()/3);
+  }
+&nbsp;
+  function proposalHasPassedMinDuration(uint256 submissionTime) public view returns (bool) {
+    return (block.timestamp - submissionTime &gt; 2 weeks);
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Mar 29 2021 10:05:02 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

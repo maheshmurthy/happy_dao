@@ -1,6 +1,8 @@
 require("@nomiclabs/hardhat-waffle");
 require('@openzeppelin/hardhat-upgrades');
 require('hardhat-deploy');
+require('solidity-coverage');
+require("hardhat-watcher");
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -45,6 +47,17 @@ module.exports = {
     deployer: {
       default: 0, // here this will by default take the first account as deployer
     }
+  },
+  watcher: {
+    compilation: {
+      tasks: ["compile"],
+    },
+    test: {
+      tasks: [{ command: 'test', params: { testFiles: ['{path}'] } }],
+      files: ['./test/**/*.js'],
+      verbose: true
+    }
   }
+  
 };
 

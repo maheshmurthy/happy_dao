@@ -6,12 +6,13 @@ module.exports = async ({getNamedAccounts, deployments, upgrades}) => {
   const {deployer} = await getNamedAccounts();
   const {log} = deployments;
 
-  const Token = await ethers.getContractFactory("Token");
-  const token = await upgrades.deployProxy(Token, ['Social Token', 'SCT', 100000, '0x']);
-  await token.deployed();
-  console.log("Token deployed to:", token.address);
+  const HappyDao = await ethers.getContractFactory("HappyDao");
+  const tokenPrice = ethers.utils.parseEther("0.01");
+  
+  const happyDao = await upgrades.deployProxy(HappyDao, [tokenPrice, 5]);
+  await happyDao.deployed();
   const implementationStorage = await ethers.provider.getStorageAt(
-    token.address,
+    happyDao.address,
     '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc'
   );
   const implementationAddress = getAddress(
@@ -19,20 +20,20 @@ module.exports = async ({getNamedAccounts, deployments, upgrades}) => {
   );
 
   log(
-    `Token deployed as Proxy at : ${token.address}, implementation: ${implementationAddress}`
+    `HappyDao deployed as Proxy at : ${happyDao.address}, implementation: ${implementationAddress}`
   );
 
-  const TokenArtifact = await deployments.getExtendedArtifact('Token');
-  const tokenAsDeployment = {
-    address: token.address,
-    ...TokenArtifact,
+  const HappyDaoArtifact = await deployments.getExtendedArtifact('HappyDao');
+  const happyDaoAsDeployment = {
+    address: happyDao.address,
+    ...HappyDaoArtifact,
     // TODO :transactionHash: transactionHash for Proxy deployment
     // args ?
     // linkedData ?
     // receipt?
     // libraries ?
   };
-  await deployments.save('Token', tokenAsDeployment);
+  await deployments.save('HappyDao', happyDaoAsDeployment);
 };
 
-module.exports.tags = ['Token'];
+module.exports.tags = ['HappyDao'];

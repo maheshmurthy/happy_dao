@@ -1,0 +1,273 @@
+{
+  "manifestVersion": "3.1",
+  "impls": {
+    "440230c4c639d271363d2b63ba3a406471a12cfcbe1e29f686bab086c1c9c878": {
+      "address": "0x9F99A6Fcf273Fc7d054e595b38a32ee82d1Fa8aB",
+      "txHash": "0x241fc6b17dd7590da03a19ae681a4af1b63865372f25efd903283f870640b9a9",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:25"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:30"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:20"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:74"
+          },
+          {
+            "contract": "HappyDao",
+            "label": "happyToken",
+            "type": "t_contract(HappyToken)2915",
+            "src": "contracts/HappyDao.sol:9"
+          },
+          {
+            "contract": "HappyDao",
+            "label": "tokenPrice",
+            "type": "t_uint256",
+            "src": "contracts/HappyDao.sol:10"
+          },
+          {
+            "contract": "HappyDao",
+            "label": "minTokensToJoin",
+            "type": "t_uint256",
+            "src": "contracts/HappyDao.sol:11"
+          },
+          {
+            "contract": "HappyDao",
+            "label": "proposalList",
+            "type": "t_array(t_struct(Proposal)2497_storage)dyn_storage",
+            "src": "contracts/HappyDao.sol:29"
+          }
+        ],
+        "types": {
+          "t_contract(HappyToken)2915": {
+            "label": "contract HappyToken"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_array(t_struct(Proposal)2497_storage)dyn_storage": {
+            "label": "struct HappyDao.Proposal[]"
+          },
+          "t_struct(Proposal)2497_storage": {
+            "label": "struct HappyDao.Proposal",
+            "members": [
+              {
+                "label": "proposer",
+                "type": "t_address"
+              },
+              {
+                "label": "applicant",
+                "type": "t_address_payable"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256"
+              },
+              {
+                "label": "yesVotes",
+                "type": "t_uint256"
+              },
+              {
+                "label": "noVotes",
+                "type": "t_uint256"
+              },
+              {
+                "label": "votes",
+                "type": "t_mapping(t_address,t_enum(Vote)2479)"
+              },
+              {
+                "label": "submissionTime",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_mapping(t_address,t_enum(Vote)2479)": {
+            "label": "mapping(address => enum HappyDao.Vote)"
+          },
+          "t_enum(Vote)2479": {
+            "label": "enum HappyDao.Vote",
+            "members": [
+              "Null",
+              "Yes",
+              "No"
+            ]
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "3ade9310dd0f9015837088422dc590193775e238a0fdd029a3d0c4dd850ba352": {
+      "address": "0xF216E064a375bDCc5dE51BF45754610577896CeE",
+      "txHash": "0x0c58535f77ecd8f4845690b761bafdda08a79ea5e6b821eae3b2fb49b38793d7",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:25"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:30"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:20"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:74"
+          },
+          {
+            "contract": "HappyDao",
+            "label": "happyToken",
+            "type": "t_contract(HappyToken)2915",
+            "src": "contracts/HappyDao.sol:9"
+          },
+          {
+            "contract": "HappyDao",
+            "label": "tokenPrice",
+            "type": "t_uint256",
+            "src": "contracts/HappyDao.sol:10"
+          },
+          {
+            "contract": "HappyDao",
+            "label": "minTokensToJoin",
+            "type": "t_uint256",
+            "src": "contracts/HappyDao.sol:11"
+          },
+          {
+            "contract": "HappyDao",
+            "label": "proposalList",
+            "type": "t_array(t_struct(Proposal)2497_storage)dyn_storage",
+            "src": "contracts/HappyDao.sol:29"
+          }
+        ],
+        "types": {
+          "t_contract(HappyToken)2915": {
+            "label": "contract HappyToken"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_array(t_struct(Proposal)2497_storage)dyn_storage": {
+            "label": "struct HappyDao.Proposal[]"
+          },
+          "t_struct(Proposal)2497_storage": {
+            "label": "struct HappyDao.Proposal",
+            "members": [
+              {
+                "label": "proposer",
+                "type": "t_address"
+              },
+              {
+                "label": "applicant",
+                "type": "t_address_payable"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256"
+              },
+              {
+                "label": "yesVotes",
+                "type": "t_uint256"
+              },
+              {
+                "label": "noVotes",
+                "type": "t_uint256"
+              },
+              {
+                "label": "votes",
+                "type": "t_mapping(t_address,t_enum(Vote)2479)"
+              },
+              {
+                "label": "submissionTime",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_address_payable": {
+            "label": "address payable"
+          },
+          "t_mapping(t_address,t_enum(Vote)2479)": {
+            "label": "mapping(address => enum HappyDao.Vote)"
+          },
+          "t_enum(Vote)2479": {
+            "label": "enum HappyDao.Vote",
+            "members": [
+              "Null",
+              "Yes",
+              "No"
+            ]
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "address": "0x503a71766a638ee8D4c135076E98081d1aCC0ABf",
+    "txHash": "0xbe62175c7406db6ac5b38dade4233871c9eea242853b5bbe8f8d3d055e0774c6"
+  }
+}
