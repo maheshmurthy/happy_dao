@@ -19,6 +19,7 @@ contract HappyDao is Initializable, OwnableUpgradeable {
   struct Proposal {
     address proposer;
     address payable applicant;
+    string text;
     uint256 amount;
     uint256 yesVotes;
     uint256 noVotes;
@@ -37,19 +38,24 @@ contract HappyDao is Initializable, OwnableUpgradeable {
     __Ownable_init();
   }
 
+  function totalProposals() public view returns (uint) {
+    return proposalList.length;
+  }
+
   function join() public payable {
     console.log("The address %s is requesting join", msg.sender);
     uint256 totalTokens = msg.value/tokenPrice;
-    require(totalTokens + happyToken.balanceOf(msg.sender) > minTokensToJoin, "You have to purchase minimum tokens to join");
+    require(totalTokens + happyToken.balanceOf(msg.sender) > minTokensToJoin, "No min tokens");
     console.log("Minting %s tokens", totalTokens);
     happyToken.mint(msg.sender, totalTokens);
   }
 
-  function submitProposal(address payable _applicant, uint256 _amount) public {
-    require(canSubmitProposal(msg.sender), "You do not have enough tokens to submit proposal");
+  function submitProposal(string memory _proposalText, address payable _applicant, uint256 _amount) public {
+    require(canSubmitProposal(msg.sender), "Not enough tokens");
     Proposal storage proposal = proposalList.push();
     proposal.proposer = msg.sender;
     proposal.applicant = _applicant;
+    proposal.text = _proposalText;
     proposal.amount = _amount;
     proposal.yesVotes = 0;
     proposal.noVotes = 0;
@@ -57,13 +63,13 @@ contract HappyDao is Initializable, OwnableUpgradeable {
     emit NewProposal(proposal.proposer, proposal.applicant, proposal.amount, proposalList.length - 1);
   }
 
-  function getProposal(uint256 index) public view returns (address proposer, address applicant, uint256 amount, uint256 yesVotes, uint256 noVotes) {
+  function getProposal(uint256 index) public view returns (address proposer, address applicant, string memory text, uint256 amount, uint256 yesVotes, uint256 noVotes) {
     Proposal storage proposal = proposalList[index];
-    return (proposal.proposer, proposal.applicant, proposal.amount, proposal.yesVotes, proposal.noVotes);
+    return (proposal.proposer, proposal.applicant, proposal.text, proposal.amount, proposal.yesVotes, proposal.noVotes);
   }
 
   function voteForProposal(uint256 proposalId, uint8 vote) public {
-    require(isDaoMember(msg.sender), "You do not have enough tokens to vote for proposal");
+    require(isDaoMember(msg.sender), "Not enough tokens");
     require(vote < 3, "Invalid Vote");
     Proposal storage proposal = proposalList[proposalId];
     proposal.votes[msg.sender] = Vote(vote);
@@ -77,11 +83,11 @@ contract HappyDao is Initializable, OwnableUpgradeable {
   function releaseFund(uint256 proposalId) public {
     Proposal storage proposal = proposalList[proposalId];
     require(proposalHasRequiredYesVotes(proposal.yesVotes, proposal.noVotes),
-            "Proposal does not have minimum votes");
+            "Not min votes");
     require(proposalHasPassedMinDuration(proposal.submissionTime),
-            "Proposal has not passed minimum duration");
+            "Not min duration");
     require(address(this).balance > proposal.amount,
-            "The treasury does not have enough balance");
+            "Not enough balance");
     proposal.applicant.transfer(proposal.amount);
   }
 
@@ -98,6 +104,6 @@ contract HappyDao is Initializable, OwnableUpgradeable {
   }
 
   function proposalHasPassedMinDuration(uint256 submissionTime) public view returns (bool) {
-    return (block.timestamp - submissionTime > 1 weeks);
+    return (block.timestamp - submissionTime > 10 seconds);
   }
 }

@@ -34,6 +34,18 @@ module.exports = async ({getNamedAccounts, deployments, upgrades}) => {
     // libraries ?
   };
   await deployments.save('HappyDao', happyDaoAsDeployment);
+  copyFilesToFrontend();
 };
+
+function copyFilesToFrontend() {
+  const fse = require('fs-extra');
+  fse.copySync("deployments", "frontend/contracts", { overwrite: true }, function (err) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log("success!");
+    }
+  });
+}
 
 module.exports.tags = ['HappyDao'];

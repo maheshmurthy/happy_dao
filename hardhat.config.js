@@ -30,7 +30,15 @@ task("latest_block", "Prints the latest block number", async() => {
 const { infuraApiKey, privateKey } = require('./secrets.json');
 
 module.exports = {
-  solidity: "0.8.0",
+  solidity: {
+    version: "0.8.0",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 1000
+      }
+    }
+  },
   networks: {
     ropsten: {
       url: `https://ropsten.infura.io/v3/${infuraApiKey}`,
