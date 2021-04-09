@@ -25,11 +25,14 @@ contract HappyDao is Initializable, OwnableUpgradeable {
     uint256 noVotes;
     mapping (address => Vote) votes;
     uint256 submissionTime;
+    bool disbursed;
   }
 
   Proposal[] public proposalList;
 
   event NewProposal(address proposer, address applicant, uint256 amount, uint256 length);
+
+  event FundsDisbursed(address applicant, uint256 amount);
 
   function initialize(uint256 _price, uint256 _minTokensToJoin) public initializer {
     happyToken = new HappyToken();
@@ -60,12 +63,14 @@ contract HappyDao is Initializable, OwnableUpgradeable {
     proposal.yesVotes = 0;
     proposal.noVotes = 0;
     proposal.submissionTime = block.timestamp;
+    proposal.disbursed = false;
     emit NewProposal(proposal.proposer, proposal.applicant, proposal.amount, proposalList.length - 1);
   }
 
-  function getProposal(uint256 index) public view returns (address proposer, address applicant, string memory text, uint256 amount, uint256 yesVotes, uint256 noVotes) {
+  function getProposal(uint256 index) public view returns (address proposer, address applicant, string memory text, uint256 amount, uint256 yesVotes,
+                                                           uint256 noVotes, bool disbursed) {
     Proposal storage proposal = proposalList[index];
-    return (proposal.proposer, proposal.applicant, proposal.text, proposal.amount, proposal.yesVotes, proposal.noVotes);
+    return (proposal.proposer, proposal.applicant, proposal.text, proposal.amount, proposal.yesVotes, proposal.noVotes, proposal.disbursed);
   }
 
   function voteForProposal(uint256 proposalId, uint8 vote) public {
@@ -82,6 +87,7 @@ contract HappyDao is Initializable, OwnableUpgradeable {
 
   function releaseFund(uint256 proposalId) public {
     Proposal storage proposal = proposalList[proposalId];
+    require(proposal.disbursed == false);
     require(proposalHasRequiredYesVotes(proposal.yesVotes, proposal.noVotes),
             "Not min votes");
     require(proposalHasPassedMinDuration(proposal.submissionTime),
@@ -89,6 +95,9 @@ contract HappyDao is Initializable, OwnableUpgradeable {
     require(address(this).balance > proposal.amount,
             "Not enough balance");
     proposal.applicant.transfer(proposal.amount);
+
+    proposal.disbursed = true;
+    emit FundsDisbursed(proposal.applicant, proposal.amount);
   }
 
   function isDaoMember(address member) public view returns (bool) {

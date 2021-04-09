@@ -31,15 +31,58 @@ const AuthHeader = () => {
               color={theme.palette.white.main}
             >
               <Grid item lg={5} md={6} xs={12}>
-                <h1>Welcome to the HappyDAO!</h1>
+                <h1>HappyDAO :)</h1>
                 <Box
-                  component="p"
+                  component="h3"
                   color={theme.palette.gray[400]}
                   lineHeight="1.7"
                   fontSize="1rem"
                 >
                   The World's simplest Decentralized Autonomous Organization for citizens of the metaverse 
                 </Box>
+                <Box marginBottom="6rem" marginLeft="4rem" textAlign="left">
+                <Box
+                  component="li"
+                  color={theme.palette.gray[400]}
+                  lineHeight="1.7"
+                  fontSize="1rem"
+                >
+                  Create an organization on the blockchain
+                </Box>
+                <Box
+                  component="li"
+                  color={theme.palette.gray[400]}
+                  lineHeight="1.7"
+                  fontSize="1rem"
+                >
+                  Anyone can join the organization
+                </Box>
+                <Box
+                  component="li"
+                  color={theme.palette.gray[400]}
+                  lineHeight="1.7"
+                  fontSize="1rem"
+                >
+                  Anyone can submit proposals
+                </Box>
+                <Box
+                  component="li"
+                  color={theme.palette.gray[400]}
+                  lineHeight="1.7"
+                  fontSize="1rem"
+                >
+                  Members can vote on proposals
+                </Box>
+                <Box
+                  component="li"
+                  color={theme.palette.gray[400]}
+                  lineHeight="1.7"
+                  fontSize="1rem"
+                >
+                  Manage treasury
+                </Box>
+                </Box>
+
               </Grid>
             </Box>
           </Box>

@@ -350,7 +350,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Proposer
+                        Amount
                       </TableCell>
                       <TableCell
                         classes={{
