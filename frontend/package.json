@@ -43,6 +43,7 @@
     "components": "^0.1.0",
     "ether-swr": "^0.6.1",
     "fast-memoize": "^2.5.2",
+    "history": "^5.0.0",
     "layouts": "^3.0.2",
     "react": "^15.3.0 || ^16.0.0 || ^17.0.0",
     "react-chartjs-2": "^2.11.1",

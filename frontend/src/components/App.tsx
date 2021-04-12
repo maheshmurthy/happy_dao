@@ -5,7 +5,7 @@ import {App} from "./components/App";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../assets/theme/theme.js";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import AuthLayout from "../layouts/Auth.js";
 import AdminLayout from "../layouts/Admin.js";
 
@@ -13,6 +13,7 @@ import { Web3ReactProvider, useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 import { useEagerConnect } from '../hooks/useEagerConnect'
 import { useInactiveListener } from '../hooks/useInactiveListener'
+import {history} from '../helpers/history.js'
 
 export const App = () => {
   const context = useWeb3React<Web3Provider>()
@@ -36,13 +37,13 @@ export const App = () => {
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
-        <BrowserRouter>
+        <Router history={history}
+               basename={process.env.PUBLIC_URL}>
           <Switch>
-            <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+            <Route path="/admin/index" render={(props) => <AdminLayout {...props} />} />
             <Route path="/" render={(props) => <AuthLayout {...props} />} />
-            <Redirect from="/" to="/admin/index" />
           </Switch>
-        </BrowserRouter>
+        </Router>
   </ThemeProvider>
   )
 }
