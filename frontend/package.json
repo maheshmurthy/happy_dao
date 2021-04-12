@@ -1,7 +1,7 @@
 {
-  "name": "swr-eth-tutorial",
+  "name": "happy-dao",
   "version": "0.0.1",
-  "description": "DApp Data Fetching strategy",
+  "description": "World's simplest DAO",
   "main": "dist/index.html",
   "scripts": {
     "start": "parcel src/index.html",

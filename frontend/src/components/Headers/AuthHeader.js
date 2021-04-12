@@ -5,6 +5,8 @@ import { useTheme } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import ListItem from "@material-ui/core/ListItem";
+import List from "@material-ui/core/List";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 
@@ -86,13 +88,17 @@ const AuthHeader = () => {
 
                 </Box>
                 <Box
-                  color={theme.palette.gray[400]}
-                  lineHeight="1.7"
-                  fontSize="1rem"
+                  alignItems="center"
+                  width="auto"
+                  color="secondary"
                 >
-                  <Button color="secondary" variant="contained">
-                    <Link href="/admin/index">Visit DAO</Link>
-                  </Button>
+                  <Link
+                    component={Button}
+                    href="/admin/index"
+                    className={classes.cta}
+                  >
+                    Visit DAO
+                  </Link>
                 </Box>
               </Grid>
             </Box>
