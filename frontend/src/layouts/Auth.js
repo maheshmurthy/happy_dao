@@ -67,7 +67,6 @@ const Auth = () => {
           <Box component={Grid} container justifyContent="center">
             <Switch>
               {getRoutes(routes)}
-              <Redirect from="*" to="/auth/login" />
             </Switch>
           </Box>
         </Container>

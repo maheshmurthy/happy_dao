@@ -67,7 +67,7 @@ export const DAOContract = () => {
                 fontWeight="600!important"
                 marginTop="0!important"
               >
-                {contractAddresses.HappyDao}
+                {contractAddresses ? contractAddresses.HappyDao : ''}
               </Box>
               <Box
                 component={Divider}

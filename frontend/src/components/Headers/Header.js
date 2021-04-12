@@ -42,11 +42,7 @@ const Header = () => {
           <div>
             <Grid container>
               <Grid item xl={6} lg={6} xs={12}>
-                {active && chainId && (<EthSWRConfig
-                  value={{ provider: library, refreshInterval: 30000 }}
-                >
                 <DAOContract />
-                </EthSWRConfig>)}
               </Grid>
               <Grid item xl={6} lg={6} xs={12}>
                 <TokenContract />
