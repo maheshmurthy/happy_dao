@@ -19,18 +19,12 @@ import HappyDAOABI from "../../../contracts/localhost/HappyDao.json";
 import HappyTokenABI from "../../../contracts/localhost/HappyToken.json";
 import { useWeb3React } from '@web3-react/core'
 
-
 // core components
 import CardStats from "../Cards/CardStats.js";
 
 import componentStyles from "../../assets/theme/components/header.js";
 
 const useStyles = makeStyles(componentStyles);
-
-const ABIs = [
-  [HappyDAOABI.address, HappyDAOABI.abi],
-  [HappyTokenABI.address, HappyTokenABI.abi]
-]
 
 const Header = () => {
   const { chainId, account, library, activate, active } = useWeb3React()
@@ -49,7 +43,7 @@ const Header = () => {
             <Grid container>
               <Grid item xl={6} lg={6} xs={12}>
                 {active && chainId && (<EthSWRConfig
-                  value={{ provider: library, ABIs: new Map(ABIs), refreshInterval: 30000 }}
+                  value={{ provider: library, refreshInterval: 30000 }}
                 >
                 <DAOContract />
                 </EthSWRConfig>)}

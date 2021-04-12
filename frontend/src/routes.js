@@ -2,10 +2,7 @@
 import Dashboard from "./views/admin/Dashboard.js";
 import Icons from "./views/admin/Icons.js";
 import Login from "./views/auth/Login.js";
-import Maps from "./views/admin/Maps.js";
-import Profile from "./views/admin/Profile.js";
 import Register from "./views/auth/Register.js";
-import Tables from "./views/admin/Tables.js";
 // @material-ui/icons components
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Dns from "@material-ui/icons/Dns";

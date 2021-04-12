@@ -19,7 +19,7 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-
+import { ContractAddress } from '../utils';
 
 const useStyles = makeStyles(componentStyles);
 
@@ -156,12 +156,12 @@ const Proposal = (props) => {
 
 const Proposals = () => {
   const classes = useStyles();
-  const {account, library} = useWeb3React()
+  const {account, library, chainId} = useWeb3React()
   const [proposalList, setProposalList] = useState([]);
-
   useEffect(() => {
     if (!!library) {
-      const contract = new Contract(HappyDAOABI.address, HappyDAOABI.abi, library.getSigner())
+      const contractAddresses = ContractAddress(chainId);
+      const contract = new Contract(contractAddresses.HappyDao, HappyDAOABI.abi, library.getSigner())
       contract.totalProposals().then((value) => {
         const list = [...Array(value.toNumber()).keys()].map((i) => 
           <Proposal key={i} contract={contract} classes={classes} index={i} />

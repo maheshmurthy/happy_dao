@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 // javascipt plugin for creating charts
-import Chart from "chart.js";
 // react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
 // @material-ui/core components
@@ -34,15 +33,9 @@ import HappyDAOABI from "../../../contracts/localhost/HappyDao.json";
 import { ethers } from "ethers";
 import Proposals from "../../components/Proposals.js";
 
+import { ContractAddress } from '../../utils';
 // core components
 import Header from "../../components/Headers/Header.js";
-
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-  chartExample2,
-} from "../../variables/charts.js";
 
 import componentStyles from "../../assets/theme/views/admin/dashboard.js";
 
@@ -56,7 +49,9 @@ function Dashboard() {
   const [proposalText, setProposalText] = useState('');
   const [applicant, setApplicant] = useState('');
 
-  const {account, library} = useWeb3React();
+  const {account, library, chainId} = useWeb3React();
+
+  const contractAddresses = ContractAddress(chainId);
 
   const onJoinChange = (event) => {
     setEthValue(event.target.value);
@@ -76,7 +71,7 @@ function Dashboard() {
   
   const handleJoinDAO = () => {
     if (!!library) {
-      const contract = new Contract(HappyDAOABI.address, HappyDAOABI.abi, library.getSigner())
+      const contract = new Contract(contractAddresses.HappyDao, HappyDAOABI.abi, library.getSigner())
       contract.join({value: ethers.utils.parseEther(ethValue)}).then(() => {
         console.log("Joining ...");
       });
@@ -85,7 +80,7 @@ function Dashboard() {
 
   const handleSubmitProposal = () => {
     if (!!library) {
-      const contract = new Contract(HappyDAOABI.address, HappyDAOABI.abi, library.getSigner())
+      const contract = new Contract(contractAddresses.HappyDao, HappyDAOABI.abi, library.getSigner())
       contract.submitProposal(proposalText, applicant, ethers.utils.parseEther(ethRequested)).then(() => {
         console.log("Submitting Proposal ...");
       });

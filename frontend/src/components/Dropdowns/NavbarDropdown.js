@@ -29,11 +29,6 @@ import componentStyles from "../../assets/theme/components/navbar-dropdown.js";
 
 const useStyles = makeStyles(componentStyles);
 
-const ABIs = [
-  [HappyDAOABI.address, HappyDAOABI.abi],
-  [HappyTokenABI.address, HappyTokenABI.abi]
-]
-
 export const injectedConnector = new InjectedConnector({
   supportedChainIds: [
     Networks.MainNet, // Mainet
@@ -41,7 +36,7 @@ export const injectedConnector = new InjectedConnector({
     Networks.Rinkeby, // Rinkeby
     Networks.Goerli, // Goerli
     Networks.Kovan, // Kovan
-    Networks.Hardhat// Kovan
+    Networks.Hardhat// Hardhat
   ],
 })
 
@@ -166,7 +161,7 @@ export default function NavbarDropdown() {
     <>
     {active && chainId ? (
         <EthSWRConfig
-          value={{ provider: library, ABIs: new Map(ABIs), refreshInterval: 30000 }}
+          value={{ provider: library, refreshInterval: 30000 }}
         >
       
       {renderNav(shorter(account))}

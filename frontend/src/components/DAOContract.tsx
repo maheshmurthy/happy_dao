@@ -6,7 +6,6 @@ import React, {useEffect, useState} from "react";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 
 import {Contract} from "@ethersproject/contracts";
-import HappyDAOABI from "../../contracts/localhost/HappyDao.json";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -21,29 +20,26 @@ import useEtherSWR, { EthSWRConfig } from 'ether-swr'
 import HappyDAOABI from "../../contracts/localhost/HappyDao.json";
 import HappyTokenABI from "../../contracts/localhost/HappyToken.json";
 import { formatEther, formatUnits } from '@ethersproject/units'
+import { Networks, ContractAddress } from '../utils';
 
 const useStyles = makeStyles(componentStyles);
 
-const ABIs = [
-  [HappyDAOABI.address, HappyDAOABI.abi],
-  [HappyTokenABI.address, HappyTokenABI.abi]
-]
-
 export const DAOContract = () => {
-  const {account, library} = useWeb3React<Web3Provider>()
+  const {account, library, chainId} = useWeb3React<Web3Provider>()
   const [proposalCount, setproposalCount] = useState(null);
   const [treasuryBalance, setTreasuryBalance] = useState(0);
 
-
   const classes = useStyles();
   const theme = useTheme();
+
+  const contractAddresses = ContractAddress(chainId);
   useEffect(() => {
     if (!!library) {
-      const contract = new Contract(HappyDAOABI.address, HappyDAOABI.abi, library.getSigner())
+      const contract = new Contract(contractAddresses.HappyDao, HappyDAOABI.abi, library.getSigner())
       contract.totalProposals().then((value) => {
         setproposalCount(value.toNumber());
       });
-      library.getBalance(HappyDAOABI.address).then((value) => {
+      library.getBalance(contractAddresses.HappyDao).then((value) => {
         setTreasuryBalance(parseFloat(formatUnits(value)).toPrecision(4));
       })
     }
@@ -71,7 +67,7 @@ export const DAOContract = () => {
                 fontWeight="600!important"
                 marginTop="0!important"
               >
-                {HappyDAOABI.address}
+                {contractAddresses.HappyDao}
               </Box>
               <Box
                 component={Divider}

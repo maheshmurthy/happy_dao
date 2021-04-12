@@ -16,18 +16,21 @@ import { Wallet } from './Wallet'
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import componentStyles from "../assets/theme/components/card-stats.js";
+import { ContractAddress } from '../utils';
 const useStyles = makeStyles(componentStyles);
 
 export const TokenContract = () => {
-  const {account, library} = useWeb3React<Web3Provider>()
+  const {account, library, chainId} = useWeb3React<Web3Provider>()
   const [tokenSupply, setTokenSupply] = useState(null);
   const [tokenBalance, setTokenBalance] = useState(null);
 
   const classes = useStyles();
   const theme = useTheme();
+  const contractAddresses = ContractAddress(chainId);
+
   useEffect(() => {
     if (!!library) {
-      const contract = new Contract(HappyTokenABI.address, HappyTokenABI.abi, library.getSigner())
+      const contract = new Contract(contractAddresses.HappyToken, HappyTokenABI.abi, library.getSigner())
       contract.totalSupply().then((value) => {
         setTokenSupply(value.toNumber());
       });
@@ -60,7 +63,7 @@ export const TokenContract = () => {
                 fontWeight="600!important"
                 marginTop="0!important"
               >
-                {HappyTokenABI.address}
+                {contractAddresses ? contractAddresses.HappyToken : ''}
               </Box>
               <Box
                 component={Divider}
