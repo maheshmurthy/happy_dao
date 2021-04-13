@@ -139,7 +139,7 @@ const Proposal = (props) => {
         {shorter(proposal.applicant)}
       </TableCell>
       <TableCell classes={{ root: classes.tableCellRoot }}>
-        {(proposal.amount ? parseFloat(formatEther(proposal.amount)).toPrecision(4) : 0)}Ξ
+        {(proposal.amount ? parseFloat(formatEther(proposal.amount)).toPrecision(4) : 0)} ETH
       </TableCell>
       <TableCell classes={{ root: classes.tableCellRoot }}>
         {proposal.yesVotes ? proposal.yesVotes.toString() : 0}

@@ -87,7 +87,7 @@ export const DAOContract = () => {
                 <Typography variant="h4">
                   Treasury Balance:
                   <Box component="span" marginLeft="1em">
-                    {treasuryBalance} Ξ
+                    {treasuryBalance} ETH
                   </Box>
                 </Typography>
               </Box>
